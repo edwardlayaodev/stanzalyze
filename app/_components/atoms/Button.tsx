@@ -1,7 +1,7 @@
 interface Props {
   children: React.ReactNode;
   buttonType: "btn-primary" | "btn-secondary" | "btn-neutral" | "btn-ghost";
-  loading: boolean;
+  loading?: boolean;
   onClick?: Function;
 }
 
