@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Patrick_Hand } from "next/font/google";
 import "./globals.css";
 import { Organism } from "./_components/organisms";
 
 const inter = Inter({ subsets: ["latin"] });
+const englebert = Patrick_Hand({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={englebert.className}>
         <Organism.Navbar />
         {children}
         <Organism.Footer />
