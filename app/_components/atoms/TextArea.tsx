@@ -9,6 +9,7 @@ interface Props {
   onChangeHandler: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onBlurHandler: (event: FocusEvent<HTMLTextAreaElement>) => void;
   setFieldValue: any;
+  readOnly?: boolean;
 }
 
 export default function TextArea({
@@ -19,7 +20,7 @@ export default function TextArea({
   errors,
   touched,
   name,
-  setFieldValue,
+  readOnly = false,
 }: Props) {
   return (
     <>
@@ -27,11 +28,12 @@ export default function TextArea({
         onChange={onChangeHandler}
         onBlur={onBlurHandler}
         name={name}
-        rows={4}
-        cols={50}
+        rows={8}
+        cols={100}
         value={value}
         placeholder={placeholder}
         className="textarea textarea-bordered w-full"
+        readOnly={readOnly}
       />
       {errors[name] && touched[name] && (
         <p className="text-error text-sm">{errors[name]}</p>
