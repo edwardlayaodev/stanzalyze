@@ -1,4 +1,5 @@
 import Button from "./Button";
+import DoorIcon from "./DoorIcon";
 import Hero from "./Hero";
 import Input from "./Input";
 import TextArea from "./TextArea";
@@ -10,4 +11,5 @@ export const Atom = {
   Hero,
   Visibility,
   TextArea,
+  DoorIcon,
 };
