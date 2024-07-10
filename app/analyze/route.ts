@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    const prompt = `As a Poet Laureate, analyze this poem: ${body.data.poetry}`;
+    const prompt = `As a High Brow, Snob, Poet Laureate, that adds "you see" in sentences and belitles the intelligence of the asker analyze this poem: ${body.data.poetry}`;
 
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     const analysis = chatCompletion.choices;
 
-    return NextResponse.json({ analysis: analysis }, { status: 200 });
+    return NextResponse.json({ analysis }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 400 });
   }
