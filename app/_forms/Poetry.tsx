@@ -12,10 +12,23 @@ interface FormValues {
 
 const InnerForm = (props: FormikProps<FormValues>) => {
   const [loadingForm, setLoadingForm] = useState(false);
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState("");
 
   const placeholderMsg =
     "In the bleak mid-winter Frosty wind made moan Earth stood hard as iron, Water like a stone; Snow had fallen, snow on snow, Snow on snow, In the bleak mid-winter Long ago. ";
+
+  async function copyResult() {
+    console.log("!!!");
+    try {
+      await navigator.clipboard.writeText(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function saveResult() {
+    alert("not yet implemented...");
+  }
 
   // on mount attach setters so we can access it on handleSubmit
   useEffect(() => {
@@ -25,7 +38,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <h1 className="mx-auto text-2xl font-bold">Poetry Analysis</h1>
+      <h1 className="mx-auto text-2xl font-bold">Paste your poem here.</h1>
       <form
         className="flex flex-col justify-center items-center gap-4"
         onSubmit={props.handleSubmit}
@@ -45,8 +58,35 @@ const InnerForm = (props: FormikProps<FormValues>) => {
           Submit
         </Atom.Button>
       </form>
-      <div className="max-w-md text-center mx-auto">
-        <p>{result}</p>
+      <div className="text-center mx-auto mt-6">
+        <h1 className="mx-auto text-2xl font-bold mb-4">
+          And wait for the Result here.
+        </h1>
+        <Atom.TextArea
+          setFieldValue={props.setFieldValue}
+          onChangeHandler={props.handleChange}
+          onBlurHandler={props.handleBlur}
+          touched={props.touched}
+          errors={props.errors}
+          value={result}
+          name="poetry"
+          placeholder={"Results will appear here..."}
+          readOnly
+        ></Atom.TextArea>
+        <div className="mt-4 ">
+          <Atom.Button
+            htmlType="button"
+            buttonType={"btn-primary"}
+            onClick={copyResult}
+          >
+            <Atom.CopyIcon />
+            <span>Copy</span>
+          </Atom.Button>
+          <Atom.Button onClick={saveResult} buttonType={"btn-secondary"}>
+            <Atom.SaveIcon />
+            <span>Save</span>
+          </Atom.Button>
+        </div>
       </div>
     </section>
   );
