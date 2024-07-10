@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={englebert.className}>
+      <body className={`${englebert.className} text-base-content`}>
         <Organism.Navbar />
         {children}
         <Organism.Footer />
