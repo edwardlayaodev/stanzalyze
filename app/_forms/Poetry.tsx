@@ -60,7 +60,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <h1 className="mx-auto text-2xl font-bold">Paste your poem here.</h1>
+      <h1 className="mx-auto text-2xl font-bold">Write a poem here</h1>
       <form
         className="flex flex-col justify-center items-center gap-4"
         onSubmit={props.handleSubmit}
@@ -112,7 +112,9 @@ const InnerForm = (props: FormikProps<FormValues>) => {
           errors={props.errors}
           value={result}
           name="poetry"
-          placeholder={"Results will appear here..."}
+          placeholder={
+            "This analysis is AI generated, It may not be accurate, Please read the analysis carefully before copying it."
+          }
           readOnly
         ></Atom.TextArea>
 
