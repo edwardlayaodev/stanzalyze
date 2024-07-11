@@ -17,7 +17,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
   return (
     <section className="flex flex-col gap-4">
       <h1 className="mx-auto text-2xl font-bold">
-        Just add any email, I won't check.
+        Just add any email, I won&apos;t check.
       </h1>
       <form
         className="flex flex-col justify-center items-center gap-4"
