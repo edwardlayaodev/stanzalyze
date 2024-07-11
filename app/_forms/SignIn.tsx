@@ -70,7 +70,7 @@ const SignIn = withFormik({
       });
 
       if (res.status == 200) {
-        window.location.href = "/";
+        window.location.href = "/dashboard/user";
       }
     } catch (error: any) {
       errors.setStatus(error.response.data.error);
