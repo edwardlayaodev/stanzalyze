@@ -5,6 +5,7 @@ import { Atom } from "../_components/atoms";
 import axios from "axios";
 import { createClient } from "../_utils/supabase/client";
 import { User } from "@supabase/supabase-js";
+import { Molecule } from "../_components/molecules";
 
 interface FormValues {
   poetry: string;
@@ -12,9 +13,17 @@ interface FormValues {
   setResult: (result: string) => void;
 }
 
+interface Result {
+  user_id: string;
+  prompt: string;
+  result: string;
+  title: string;
+}
+
 const InnerForm = (props: FormikProps<FormValues>) => {
   const supabase = createClient();
-  const [userId, setUserId] = useState("");
+  const [title, setTitle] = useState("");
+  const [user_id, setUserId] = useState("");
   const [loadingForm, setLoadingForm] = useState(false);
   const [result, setResult] = useState("");
 
@@ -45,11 +54,18 @@ const InnerForm = (props: FormikProps<FormValues>) => {
     }
   }
 
-  async function saveResult(user_id: string, prompt: string, result: string) {
+  function actionHandler() {
+    saveResult({
+      user_id: user_id,
+      prompt: props.values.poetry,
+      result: result,
+      title: title,
+    });
+  }
+
+  async function saveResult(result: Result) {
     try {
-      const { error } = await supabase
-        .from("Poetry")
-        .insert({ user_id, prompt, result });
+      const { error } = await supabase.from("Poetry").insert({ ...result });
       if (!error) {
         alert("Your analysis have been saved.");
       }
@@ -85,7 +101,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
         </Atom.Button>
       </form>
       <div className="text-center mx-auto mt-6">
-        <Atom.Visibility state={!userId}>
+        <Atom.Visibility state={!user_id}>
           <div role="alert" className="alert">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -127,17 +143,35 @@ const InnerForm = (props: FormikProps<FormValues>) => {
             <Atom.CopyIcon />
             <span>Copy</span>
           </Atom.Button>
-
-          <Atom.Button
-            onClick={async () => {
-              await saveResult(userId, props.values.poetry, result);
+          <Molecule.Modal
+            type={"input"}
+            inputProps={{
+              placeholder: "Eg. A Christmas Carol",
+              setter: setTitle,
+              getter: title,
             }}
-            disabled={!result || !userId}
-            buttonType={"btn-secondary"}
-          >
-            <Atom.SaveIcon />
-            <span>Save</span>
-          </Atom.Button>
+            modalProps={{
+              title: "Save Poem Analysis",
+              message: "Please provide a title for this Result",
+            }}
+            actionBtnProps={{
+              icon: <Atom.SaveIcon />,
+              type: "btn-primary",
+              label: "Save",
+              handler: actionHandler,
+            }}
+            openBtnProps={{
+              icon: <Atom.SaveIcon />,
+              type: "btn-secondary",
+              label: "Save",
+              disabled: !user_id || !result,
+            }}
+            cancelBtnProps={{
+              icon: <Atom.DoorIcon />,
+              type: "btn-secondary",
+              label: "Cancel",
+            }}
+          />
         </div>
       </div>
     </section>
