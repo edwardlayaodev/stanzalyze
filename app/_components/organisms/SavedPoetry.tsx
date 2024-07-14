@@ -1,0 +1,13 @@
+import { Molecule } from "../molecules";
+
+interface Props {
+  data: any;
+}
+
+export default function SavedPoetry({ data }: Props) {
+  return (
+    <>
+      <Molecule.List header="Saved Poetry" items={data} />
+    </>
+  );
+}

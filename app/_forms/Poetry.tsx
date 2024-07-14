@@ -46,6 +46,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
     props.setFieldValue("setResult", setResult);
   }, []);
 
+  //TODO: move to module
   async function copyResult() {
     try {
       await navigator.clipboard.writeText(result);
