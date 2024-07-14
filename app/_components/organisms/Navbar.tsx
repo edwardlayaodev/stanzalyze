@@ -12,8 +12,15 @@ export default async function Navbar() {
     <nav className="bg-base-100 px-4">
       <div className="navbar max-w-[1280px] mx-auto">
         <div className="navbar-start">
-          <Link href={"/"}>
-            <p className="text-xl font-bold">Stanzalyze</p>
+          <Link
+            className="flex flex-row justify-center items-center gap-2"
+            href={"/"}
+          >
+            <Atom.Brand />
+            <p className="text-xl font-bold">
+              <span className="text-primary">Stanza</span>
+              <span className="text-neutral">lyze.</span>
+            </p>
           </Link>
         </div>
 
