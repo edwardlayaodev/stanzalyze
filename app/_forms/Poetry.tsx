@@ -50,6 +50,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
   async function copyResult() {
     try {
       await navigator.clipboard.writeText(result);
+      alert("Result copied to clipboard.");
     } catch (error) {
       console.error(error);
     }
@@ -140,6 +141,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
             htmlType="button"
             buttonType={"btn-primary"}
             onClick={copyResult}
+            disabled={!result}
           >
             <Atom.CopyIcon />
             <span>Copy</span>
