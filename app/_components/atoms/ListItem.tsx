@@ -6,7 +6,7 @@ interface Props {
 export default function ListItem({ title, description }: Props) {
   return (
     <li>
-      <p className="text-2xl font-bold">{title}</p>
+      <p className="text-xl font-bold">{title}</p>
       {description}
     </li>
   );
