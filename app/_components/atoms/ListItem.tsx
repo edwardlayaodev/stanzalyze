@@ -1,12 +1,11 @@
 interface Props {
   title: string;
   description: string;
-  id: string;
 }
 
-export default function ListItem({ title, description, id }: Props) {
+export default function ListItem({ title, description }: Props) {
   return (
-    <li key={id}>
+    <li>
       <p className="text-2xl font-bold">{title}</p>
       {description}
     </li>
