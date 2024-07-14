@@ -1,6 +1,7 @@
 import { Atom } from "@/app/_components/atoms";
 import { Molecule } from "@/app/_components/molecules";
 import List from "@/app/_components/molecules/List";
+import { Organism } from "@/app/_components/organisms";
 import { createClient } from "@/app/_utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -28,8 +29,8 @@ export default async function UserDashboard() {
   }
 
   return (
-    <section className=" bg-base-200 min-h-screen flex flex-col gap-8 justify-start items-center px-12 py-32">
-      <Molecule.List header={"Saved Poetry"} data={poetryData} />
+    <section className=" bg-base-200 min-h-screen flex flex-col gap-8 justify-start items-center px-2 md:px-32 py-32">
+      <Organism.SavedPoetry data={poetryData} />
     </section>
   );
 }
