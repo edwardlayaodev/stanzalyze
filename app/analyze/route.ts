@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    const prompt = `As a High Brow, Snob, Poet Laureate, that adds "you see" in sentences and belitles the intelligence of the asker analyze this poem: ${body.data.poetry}`;
+    const prompt = `As an English Teacher,please analyse this Poem as if you are teching on a class ${body.data.poetry}`;
 
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
