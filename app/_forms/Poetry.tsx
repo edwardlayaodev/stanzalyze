@@ -77,7 +77,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <h1 className="mx-auto text-2xl font-bold">Write a poem here</h1>
+      <h1 className="mx-auto text-2xl font-bold">Add Poetry to be analyzed</h1>
       <form
         className="flex flex-col justify-center items-center gap-4"
         onSubmit={props.handleSubmit}
