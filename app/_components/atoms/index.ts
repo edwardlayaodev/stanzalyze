@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Collapse from "./Collapse";
 import CopyIcon from "./CopyIcon";
 import DoorIcon from "./DoorIcon";
 import Hero from "./Hero";
@@ -20,4 +21,5 @@ export const Atom = {
   SaveIcon,
   PersonIcon,
   ListItem,
+  Collapse,
 };
