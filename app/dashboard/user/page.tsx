@@ -29,7 +29,13 @@ export default async function UserDashboard() {
   }
 
   return (
-    <section className=" bg-base-200 min-h-screen flex flex-col gap-8 justify-start items-center px-2 md:px-32 py-32">
+    <section className=" bg-base-200 min-h-screen flex flex-col gap-8 justify-start items-end px-2 md:px-32 py-12 md:py-32">
+      <form className="" method="post" action={"/auth/logout"}>
+        <Atom.Button buttonType="btn-primary">
+          <Atom.DoorIcon />
+          Logout
+        </Atom.Button>
+      </form>
       <Organism.SavedPoetry data={poetryData} />
     </section>
   );

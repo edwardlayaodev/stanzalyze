@@ -1,3 +1,4 @@
+import Brand from "./Brand";
 import Button from "./Button";
 import Collapse from "./Collapse";
 import CopyIcon from "./CopyIcon";
@@ -22,4 +23,5 @@ export const Atom = {
   PersonIcon,
   ListItem,
   Collapse,
+  Brand,
 };

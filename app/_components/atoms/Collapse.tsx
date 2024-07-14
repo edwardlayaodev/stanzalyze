@@ -27,7 +27,9 @@ export default function Collapse({ title, description, content, id }: Props) {
           checked={open}
         />
         <div className="collapse-title text-xl font-medium">
-          <p className="text-4xl font-bold">{title}</p>
+
+          <p className="text-2xl font-bold">{title}</p>
+
           <p className="mt-6 md:mt-0">
             <span className="font-bold">PROMPT: </span> {description}
           </p>

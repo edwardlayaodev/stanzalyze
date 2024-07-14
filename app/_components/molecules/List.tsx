@@ -11,7 +11,7 @@ export default function List({ items, header }: Props) {
   return (
     <>
       <h1 className="text-5xl font-bold text-center">{header}</h1>
-      <ul className="text-left flex flex-col gap-8">
+      <ul className="text-left flex flex-col gap-8 mt-12">
         {items.map((item: any) => {
           return (
             <Atom.Collapse

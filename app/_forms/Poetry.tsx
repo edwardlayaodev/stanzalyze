@@ -50,6 +50,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
   async function copyResult() {
     try {
       await navigator.clipboard.writeText(result);
+      alert("Result copied to clipboard.");
     } catch (error) {
       console.error(error);
     }
@@ -77,7 +78,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <h1 className="mx-auto text-2xl font-bold">Write a poem here</h1>
+      <h1 className="mx-auto text-2xl font-bold">Add Poetry to be analyzed</h1>
       <form
         className="flex flex-col justify-center items-center gap-4"
         onSubmit={props.handleSubmit}
@@ -140,6 +141,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
             htmlType="button"
             buttonType={"btn-primary"}
             onClick={copyResult}
+            disabled={!result}
           >
             <Atom.CopyIcon />
             <span>Copy</span>

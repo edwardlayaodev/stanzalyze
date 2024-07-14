@@ -7,7 +7,9 @@ interface Props {
 export default function SavedPoetry({ data }: Props) {
   return (
     <>
-      <Molecule.List header="Saved Poetry" items={data} />
+      <div>
+        <Molecule.List header="Saved Poetry" items={data} />
+      </div>
     </>
   );
 }
